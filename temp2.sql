@@ -1,0 +1,20 @@
+use startersql;
+-- drop table users;
+-- select * from users;
+-- select count(*) from users;
+-- select count(*) from users where gender = 'Male';
+-- select min(salary) as min_salary;
+-- select salary from users limit 5;
+-- select sum(salary) as total from users;
+-- select avg(salary) as average from users;
+-- INSERT INTO users (name, email, gender, date_of_birth, salary) VALUES
+-- ('Ananth Jeeth', 'ananthjeeth@gmail.com', 'Male', '2005-10-12', 105000.00);
+-- select name, datediff(curdate(), date_of_birth) as days_alive from users;
+-- select *, datediff(curdate(), date_of_birth) as days_alive from users where name = 'Ananth Jeeth';
+-- select salary, round(salary) as rounded, floor(salary) as floored, ceil(salary) as ceiled from users;
+-- select * from users;
+-- select id, mod(id, 2) as remainder from users;
+-- select name, gender,
+-- 	if(gender = 'Female', 'Yes', 'No') as is_female 
+-- from users;
+-- select name, email, concat(name,'<',email,'>') as user_email from users;

@@ -1,0 +1,14 @@
+-- use startersql;
+-- select * from users;
+-- select * from users where gender in ('Male','Other');
+-- update users set salary = 45000, email = 'aarav@aarav.com' where id = 1;
+-- update users set salary = 70000 where id = 5;
+-- update users set name = 'Aisha Khan' where email = 'aisha@example.com';
+-- set SQL_SAFE_UPDATES = 0;
+-- update users set salary = salary + 10000 where salary < 60000;
+-- set SQL_SAFE_UPDATES = 1;
+-- update users set gender = 'Other' where name = 'Ishaan';
+-- delete from users where salary<65000;
+-- delete from users where id = 3;
+-- delete from users where salary is null;
+-- select * from users;

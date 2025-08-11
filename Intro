@@ -1,0 +1,202 @@
+Database - A collection of data and holds this data in the form of tables
+
+Table - Holds the data in form of rows and columns.
+
+This is similar to excel or google sheets
+
+The database provides you the capability to access and manipulate this data.
+
+Their are 2 types of Databases
+01. Relational Database - Stored in the form of rows & columns and also the tables have relation between them.
+EX: MySQL, SQL Server, PostreSQL, SQLite, MariaDB
+
+02. NoSQL Database - Stored in the form of Key value, Document, Graph and also doesn't have relation between them.
+EX: Hbase, Mongodb, cassandra
+
+
+mysql-ctl cli;
+
+show databases; (to show the list of databases)
+
+CREATE DATABASE trendytech; (To create a database)
+drop database trendytech;(to delete yhe database)
+
+use trendytech:(to select the database)
+SELECT database();
+
+Datatypes in sql
+int for numeric
+varchar for string
+
+CREATE TABLE employee
+(
+name varchar(50),
+age INT,
+salary INT
+);
+
+
+
+session - 2
+
+CRUD Operations
+
+create - insert statements
+read - select statements
+update - update statements
+delete - delete statements
+
+creation of table and insert statements
+
+employee table
+
+you preper to hire from banglore 
+
+CREATE TABLE employee(
+firstname varchar(20),
+middlname varchar(20),
+lastname varchar(20),
+age int,
+salary int,
+location varchar(20)
+);
+
+INSERT INTO employee(firstname,middlname,lastname,age,salary,location) VALUES('Ananth','Jeeth','Vuppala','20',1000000,'Banglore')
+
+INSERT INTO employee VALUES('Ananth','Jeeth','Vuppala','20',1000000,'Banglore')
+
+INSERT INTO employee VALUES('Ananth','Vuppala','20',1000000,'Banglore')
+gives error because not filled completely
+
+NULL is unknown in SQL
+
+If want to put single quote(') inside the name then
+their are two ways
+01. INSERT INTO employee VALUES('Ananth',"Vuppal'a",'20',1000000,'Banglore')
+02. INSERT INTO employee VALUES('Ananth','Vuppal\'a','20',1000000,'Banglore')
+(\) it assumes as next charachter is should be considered
+
+INSERT INTO employee(firstname,middlname,lastname,age,salary,location) VALUES('Ananth','Jeeth','Vuppala','20',1000000,'Banglore'),('Rinku','Singh','Vuppala','20',1010000,'Banglore');
+for inserting multiple data
+
+CREATE TABLE employee(
+firstname varchar(20) NOT NULL,
+middlname varchar(20),
+lastname varchar(20) NOT NULL,
+age int NOT NULL,
+salary int NOT NULL,
+location varchar(20) NOT NULL
+);
+Now it will not allow to leave empty
+
+Default values
+===============
+
+CREATE TABLE employee(
+firstname varchar(20) NOT NULL,
+middlname varchar(20),
+lastname varchar(20) NOT NULL,
+age int NOT NULL,
+salary int NOT NULL,
+location varchar(20) DEFAULT 'Hyderabad'
+); (here location is set to hyderabad as default)
+
+INSERT INTO employee(firstname,lastname,age,salary) VALUES('Ananth','Jeeth','20',1000000);
+
+INSERT INTO employee(firstname,lastname,age,salary,location) VALUES('Ananth','Jeeth','20',1000000,'banglore')
+
+INSERT INTO employee(firstname,lastname,age,salary,location) VALUES('Ramesh','Kumar','20',1000000,null)
+
+
+CREATE TABLE employee(
+firstname varchar(20) NOT NULL,
+middlname varchar(20),
+lastname varchar(20) NOT NULL,
+age int NOT NULL,
+salary int NOT NULL,
+location varchar(20) NOT NULL DEFAULT 'Hyderabad'
+);
+
+INSERT INTO employee(firstname,lastname,age,salary) VALUES('Ananth','Jeeth','20',1000000);
+
+
+COMBINATION OF NOT NULL AND DEFAULT
+====================================
+
+INSERT INTO employee(firstname,lastname,age,salary) VALUES('Ananth','Jeeth','20',1000000);
+
+Primary Key
+============
+It uniquely identify each record in the table
+01.
+CREATE TABLE employee(
+id int PRIMARY KEY,
+firstname varchar(20) NOT NULL,
+middlname varchar(20),
+lastname varchar(20) NOT NULL,
+age int NOT NULL,
+salary int NOT NULL,
+location varchar(20) NOT NULL DEFAULT 'Hyderabad'
+);
+
+02.
+CREATE TABLE employee(
+id int,
+firstname varchar(20) NOT NULL,
+middlname varchar(20),
+lastname varchar(20) NOT NULL,
+age int NOT NULL,
+salary int NOT NULL,
+location varchar(20) NOT NULL DEFAULT 'Hyderabad',
+PRIMARY KEY(id)
+);
+
+INSERT INTO employee(id,firstname,lastname,age,salary) VALUES(1,'Ananth','Jeeth','20',1000000);
+INSERT INTO employee(id,firstname,lastname,age,salary) VALUES(1,'Ananth','Jeeth','20',1000000);
+
+for a primary key null and repeated value are not allowed
+
+
+CREATE TABLE employee(
+id int AUTO_INCREMENT,
+firstname varchar(20) NOT NULL,
+middlname varchar(20),
+lastname varchar(20) NOT NULL,
+age int NOT NULL,
+salary int NOT NULL,
+location varchar(20) NOT NULL DEFAULT 'Hyderabad',
+PRIMARY KEY(id)
+);
+
+INSERT INTO employee(firstname,lastname,age,salary) VALUES('Ananth','Jeeth','20',1000000);
+INSERT INTO employee(firstname,lastname,age,salary) VALUES('Ramesh','Kumar','51',1000000);
+
+select * from employee;
++----+-----------+-----------+----------+-----+---------+-----------+
+| id | firstname | middlname | lastname | age | salary  | location  |
++----+-----------+-----------+----------+-----+---------+-----------+
+|  1 | Ananth    | NULL      | Jeeth    |  20 | 1000000 | Hyderabad |
+|  2 | Ramesh    | NULL      | Kumar    |  51 | 1000000 | Hyderabad |
++----+-----------+-----------+----------+-----+---------+-----------+
+
+UNIQUE KEY
+===========
+
+You can only have 1 primary key and the primary key cannot hold any null value
+we should use primary key when we have to uniquely identify each record.
+
+Unique key can hold null
+
+for example in MySQL a unique key can hold any number of NULL values
+In some of the other famous DB's unique key hold only one NULL
+
+so the purpose of unique key is to make sure the values do not duplicate
+
+we can have only one primary key but multiple unique keys in a table.
+
+CREATE TABLE employee(
+firstname varchar(20) NOT NULL,
+lastname varchar(20) NOT NULL,
+age int NOT NULL,
+primary key(firstname,lastname)
+);
